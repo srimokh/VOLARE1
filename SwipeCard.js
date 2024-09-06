@@ -13,7 +13,7 @@ const SwipeCard = ({ imageUrl, onSwipe }) => {
       setIsSwiped(true);
       setTimeout(() => {
         onSwipe('left'); // Trigger the next image after the delay
-      }, 500); // Delay the image change
+      }, 2000); // Delay the image change
     },
     onSwipedRight: () => {
       setSwipeDirection('right');
@@ -21,18 +21,18 @@ const SwipeCard = ({ imageUrl, onSwipe }) => {
       setIsSwiped(true);
       setTimeout(() => {
         onSwipe('right'); // Trigger the next image after the delay
-      }, 500); // Delay the image change
+      }, 2000); // Delay the image change
     },
   });
 
   useEffect(() => {
     if (isSwiped) {
-      // Clear the swipe direction and border color after 1 second
+      // Reset the swipe state and border after the swipe
       const timer = setTimeout(() => {
-        setSwipeDirection(null);
-        setIsSwiped(false);
-        setBorderColor('transpnpm startarent'); // Reset the border color
-      }, 500);
+        setSwipeDirection(null);  // Clear swipe direction after the swipe
+        setIsSwiped(false);       // Reset swiped state
+        setBorderColor('transparent'); // Reset the border color
+      }, 2000); // Keep the timeout for the current image animation
 
       return () => clearTimeout(timer); // Cleanup the timer
     }
@@ -40,22 +40,24 @@ const SwipeCard = ({ imageUrl, onSwipe }) => {
 
   return (
     <div {...handlers} style={styles.cardContainer}>
-      {/* Feedback stays after image change */}
+      {/* Swipe feedback */}
       {swipeDirection && (
         <div style={{ ...styles.feedback, ...styles[swipeDirection] }}>
           {swipeDirection === 'right' ? 'Liked' : 'Disliked'}
         </div>
       )}
 
-      {/* Image with dynamic border color and swipe animation */}
+      {/* Image container without entry animation for the next image */}
       <div
         style={{
           ...styles.card,
           borderColor: borderColor, // Dynamic border color based on swipe direction
           transform: isSwiped
-            ? `translateX(${swipeDirection === 'right' ? '500px' : '-500px'})` // Swipe animation
-            : 'none',
-          transition: 'transform 1s ease, border-color 0.5s ease', // Smooth swipe and border color transition
+            ? `translateX(${swipeDirection === 'right' ? '1500px' : '-1500px'})` // Swipe animation for the current image
+            : 'none', // No animation for the next image
+          transition: isSwiped
+            ? 'transform 1s ease, border-color 1s ease' // Animation for the current image
+            : 'border-color 1s ease', // Only border-color transition for the next image (no swipe animation)
         }}
       >
         <img src={imageUrl} alt="Swipe" style={styles.image} />
