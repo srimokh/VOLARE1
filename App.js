@@ -4276,7 +4276,7 @@ function App() {
 'https://cdn.shopify.com/s/files/1/1383/4563/files/COMBAT-BOOT-1.webp?v=1700714874',
 'https://cdn.shopify.com/s/files/1/1383/4563/files/SF8LE-1000BLKCF-S.webp?v=1700245926',
 'https://cdn.shopify.com/s/files/1/1383/4563/files/SF8LE-1000BLKCF-F.webp?v=1700245926',
-'https://cdn.shopify.com/s/files/1/1383/4563/files/SF8LE-1000BLKCF-B.webp?v=1700245926'
+'https://cdn.shopify.com/s/files/1/1383/4563/files/SF8LE-1000BLKCF-B.webp?v=1700245926',
     
   ];
 

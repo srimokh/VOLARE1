@@ -31,7 +31,7 @@ const SwipeCard = ({ imageUrl, onSwipe }) => {
       const timer = setTimeout(() => {
         setSwipeDirection(null);
         setIsSwiped(false);
-        setBorderColor('transparent'); // Reset the border color
+        setBorderColor('transpnpm startarent'); // Reset the border color
       }, 500);
 
       return () => clearTimeout(timer); // Cleanup the timer
